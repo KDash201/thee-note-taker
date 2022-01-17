@@ -8,6 +8,9 @@ const path = require("path");
 const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
 
+const { db } = require("./db/db.json");
+
+
 // MIDDLEWARE
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
@@ -16,10 +19,10 @@ app.use(express.json());
 // For use of all files in public dir
 app.use(express.static("public"));
 
-const { db } = require("./db/db.json");
 
 app.get("/api/notes", (req, res) => {
   res.json(db);
+  console.log(db);
 });
 
 // Use apiRoutes
